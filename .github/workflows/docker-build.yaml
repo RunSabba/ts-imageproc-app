@@ -3,6 +3,9 @@ on:
     push:
         branches:
             - main
+        paths:
+            - './Dockerfile'
+
 
 jobs:
     publish-images:
@@ -10,6 +13,12 @@ jobs:
         steps:
             - name: checkout
               uses: actions/checkout@v4
+            - name: Log into DockerHub
+              uses: docker/login-action@v3
+              with:
+                username: abbasnur
+                password: ${{secrets.DOCKER_TOKEN}}
+             #build and push to dockerhub 
             - name: build image
               run: docker build . -t abbasnur/ts-imageproc-app:v2
             - name: push image to dockerhub
