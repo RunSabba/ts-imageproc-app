@@ -20,8 +20,10 @@ COPY --from=build /usr/src/app/node_modules ./node_modules
 
 COPY --from=build /usr/src/app/dist ./dist
 
-RUN useradd -u 1000 -r -s /bin/false runsabba && \ 
- chown -R runsabba:runsabba /app
+RUN addgroup --system --gid 1001 nodejs && \
+    adduser --system --uid 1001 --gid 1001 --no-create-home runsabba
+ 
+RUN chown -R runsabba:runsabba /app
 
 USER runsabba
 
