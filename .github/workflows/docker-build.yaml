@@ -1,0 +1,16 @@
+name: builing and pushing image to DockerHub
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    publish-images:
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout
+              uses: actions/checkout@v4
+            - name: build image
+              run: docker build . -t abbasnur/ts-imageproc-app:v2
+            - name: push image to dockerhub
+              run: docker push abbasnur/ts-imageproc-app:v2         
