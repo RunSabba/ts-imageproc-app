@@ -23,7 +23,7 @@ COPY --from=build /usr/src/app/dist ./dist
 RUN addgroup --system --gid 1001 nodejs && \
     adduser --system --uid 1001 --gid 1001 --no-create-home runsabba
  
-RUN chown -R runsabba:runsabba /app
+RUN chown -R runsabba:nodejs /app
 
 USER runsabba
 
