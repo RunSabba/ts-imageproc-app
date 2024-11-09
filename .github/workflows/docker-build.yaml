@@ -13,13 +13,10 @@ jobs:
         steps:
             - name: checkout
               uses: actions/checkout@v4
-            - name: Log into DockerHub
-              uses: docker/login-action@v3
-              with:
-                username: abbasnur
-                password: ${{secrets.DOCKER_TOKEN}}
              #build and push to dockerhub 
             - name: build image
               run: docker build . -t abbasnur/ts-imageproc-app:v2
             - name: push image to dockerhub
-              run: docker push abbasnur/ts-imageproc-app:v2         
+              run: | # | to run multiple commands
+                docker login -u abbasnur -p ${{ secrets.DOCKER_TOKEN }}
+                docker push abbasnur/ts-imageproc-app:v2         
