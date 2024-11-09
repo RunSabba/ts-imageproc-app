@@ -4,7 +4,7 @@ on:
         branches:
             - main
         paths:
-            - './Dockerfile'
+            - 'ts-imageproc-app/Dockerfile'
 
 
 jobs:
