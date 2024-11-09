@@ -24,7 +24,7 @@ RUN addgroup --system --gid 1001 nodejs && \
     adduser --system --uid 1001 --gid 1001 --no-create-home runsabba
  
 RUN chown -R runsabba:nodejs /app
-
+#
 USER runsabba
 
 EXPOSE 3000
